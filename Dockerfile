@@ -1,15 +1,22 @@
-FROM tiangolo/uwsgi-nginx-flask:python3.6
+# Dockerfile extending the generic Node image with application files for a
+# single application.
+FROM gcr.io/google_appengine/nodejs
 
-# Customize uWSGI webserver port
-ENV LISTEN_PORT 8080
-EXPOSE 8080
+# Check to see if the the version included in the base runtime satisfies
+# '>=0.12.7', if not then do an npm install of the latest available
+# version that satisfies it.
+RUN /usr/local/bin/install_node '>=0.12.7'
+COPY . /app/
 
-# Copy App and Install requirements
-COPY ./app /app
-RUN npm install npm -g -r /app/requirements.txt
-
-# Customize Postgres Connection
-#ENV DB_HOST 127.0.0.1
-#ENV DB_USER postgres
-#ENV DB_PASS @Alest2018
-#ENV DB_NAME thanksbot-bd
+# You have to specify "--unsafe-perm" with npm install
+# when running as root.  Failing to do this can cause
+# install to appear to succeed even if a preinstall
+# script fails, and may have other adverse consequences
+# as well.
+# This command will also cat the npm-debug.log file after the
+# build, if it exists.
+RUN npm install --unsafe-perm || \
+  ((if [ -f npm-debug.log ]; then \
+      cat npm-debug.log; \
+    fi) && false)
+CMD npm start
