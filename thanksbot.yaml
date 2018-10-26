@@ -18,9 +18,9 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: thanksbot
+  name: thanksbot-frontend
   labels:
-    app: thanksbot
+    app: bookshelf
 # The bookshelf frontend replica set ensures that at least 3
 # instances of the bookshelf app are running on the cluster.
 # For more info about Pods see:
@@ -30,13 +30,13 @@ spec:
   template:
     metadata:
       labels:
-        app: thanksbot
+        app: bookshelf
         tier: frontend
     spec:
       containers:
       - name: thanksbot-app
         # Replace [GCLOUD_PROJECT] with your project ID or use `make template`.
-        image: gcr.io/[GCLOUD_PROJECT]/bookshelf
+        image: gcr.io/make template/bookshelf
         # This setting makes nodes pull the docker image every time before
         # starting the pod. This is useful when debugging, but should be turned
         # off in production.
@@ -46,5 +46,5 @@ spec:
         - name: http-server
           containerPort: 8080
         env:
-          - name: thanksbot
+          - name: PROJECT_ID
             value: workplace-thanksbot
