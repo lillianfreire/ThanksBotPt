@@ -15,6 +15,20 @@ if (process.env.NODE_ENV === 'production') {
   require('@google-cloud/debug-agent').start();
 }
 
+const path = require('path');
+const session = require('express-session');
+const MemcachedStore = require('connect-memcached')(session);
+const passport = require('passport');
+const config = require('./config');
+const logging = require('./lib/logging');
+
+const app = express();
+
+app.disable('etag');
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'pug');
+app.set('trust proxy', true);
+
 const
     crypto = require('crypto'),
     express = require('express'),
