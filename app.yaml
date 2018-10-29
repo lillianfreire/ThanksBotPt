@@ -1,2 +1,15 @@
 apiVersion: v1
 kind: Service
+metadata:
+  name: thanksbot
+  labels:
+    app: thanksbot
+    tier: frontend
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 8080
+    targetPort: http-server
+  selector:
+    app: thanksbot
+    tier: frontend
