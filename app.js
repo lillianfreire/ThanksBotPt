@@ -9,12 +9,6 @@
 
 'use strict';
 
-// Activate Google Cloud Trace and Debug when in production
-if (process.env.NODE_ENV === 'production') {
-  require('@google-cloud/trace-agent').start();
-  require('@google-cloud/debug-agent').start();
-}
-
 const path = require('path');
 const session = require('express-session');
 const MemcachedStore = require('connect-memcached')(session);
