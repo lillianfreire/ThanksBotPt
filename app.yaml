@@ -14,6 +14,8 @@
  
 # This file configures the bookshelf task worker. The worker is responsible
 # for processing book requests and updating book information.
+runtime: nodejs
+env: flex
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
