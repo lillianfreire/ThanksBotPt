@@ -40,25 +40,25 @@ resources:
 # bookshelf worker pod are running on the cluster.
 # For more info about Pods see:
 #   https://cloud.google.com/container-engine/docs/pods/
-spec:
-  replicas: 2
-  template:
-    metadata:
-      labels:
-        app: app
-        tier: app
-    spec:
-      containers:
-      - name: thanksbotalest
+##spec:
+  ##replicas: 2
+  ##template:
+    ##metadata:
+      ##labels:
+        ##app: app
+        ##tier: app
+    ##spec:
+      ##containers:
+      ##- name: thanksbotalest
         # Replace [GCLOUD_PROJECT] with your project ID or use `make template`.
-        image: gcr.io/workplace-thanksbot/thanks
+        ##image: gcr.io/workplace-thanksbot/thanks
         # This setting makes nodes pull the docker image every time before
         # starting the pod. This is useful when debugging, but should be turned
         # off in production.
-        imagePullPolicy: Always
+        ##imagePullPolicy: Always
         # The SCRIPT environment variable is used by `npm start` to control
         # which script is executed. This tells npm start to use `worker.js`
         # instead of the default `app.js`.
-        env:
-        - name: SCRIPT
-          value: app.js
+        ##env:
+        ##- name: SCRIPT
+          ##value: app.js
