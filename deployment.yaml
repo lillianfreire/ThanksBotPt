@@ -3,12 +3,12 @@ env:
   valueFrom:
     secretKeyRef:
       name: cloudsql-db-credentials
-      key: username
+      key: proxyuser
 - name: @Alest2018
   valueFrom:
     secretKeyRef:
       name: cloudsql-db-credentials
-      key: password
+      key: @Alest2018
       
       - name: cloudsql-proxy
   image: gcr.io/workplace-thanksbot/thanks-proxy:1.11
