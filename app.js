@@ -10,6 +10,7 @@
 const server = app.listen(8080, () => {
   const host = server.address().address;
   const port = server.address().port;
+}
 
 const
     crypto = require('crypto'),
@@ -201,3 +202,4 @@ app.post('/webhook', function(request, response) {
 
 app.listen(app.get('port'), function() {
     console.log('Node app is running on port', app.get('port'));
+});
