@@ -15,7 +15,7 @@
 # This file configures the bookshelf task worker. The worker is responsible
 # for processing book requests and updating book information.
 
-apiVersion: extensions/v1beta1
+apiVersion: extensions/v1
 kind: Deployment
 metadata:
   name: thanksbot
