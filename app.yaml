@@ -31,11 +31,11 @@ resources:
   disk_size_gb: 10
 
 ## apiVersion: extensions/v1beta1
-kind: Deployment
-metadata:
-  name: thanksbot
-  labels:
-    app: app
+## kind: Deployment
+## metadata:
+##  name: thanksbot
+ ## labels:
+  ##  app: app
 # The bookshelf worker replica set ensures that at least 2 instances of the
 # bookshelf worker pod are running on the cluster.
 # For more info about Pods see:
