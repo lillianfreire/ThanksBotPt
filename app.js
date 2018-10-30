@@ -6,12 +6,6 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-
-const server = app.listen(8080, () => {
-  const host = server.address().address;
-  const port = server.address().port;
-})
-
 const
     crypto = require('crypto'),
     express = require('express'),
