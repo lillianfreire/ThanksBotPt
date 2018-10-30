@@ -1,20 +1,20 @@
 env:
-- name: DB_USER
+- name: proxyuser
   valueFrom:
     secretKeyRef:
       name: cloudsql-db-credentials
-      key: proxyuser
-- name: DB_PASSWORD
+      key: username
+- name: @Alest2018
   valueFrom:
     secretKeyRef:
       name: cloudsql-db-credentials
-      key: @Alest2018
+      key: password
       
       - name: cloudsql-proxy
-  image: gcr.io/cloudsql-docker/gce-proxy:1.11
+  image: gcr.io/workplace-thanksbot/thanks-proxy:1.11
   command: ["/cloud_sql_proxy",
             "-instances=workplace-thanksbot:southamerica-east1:thanksbot-bd=tcp:5432",
-            "-credential_file=/secrets/cloudsql/credentials.json"]
+            "-credential_file=/credentials.json"]
   volumeMounts:
     - name: cloudsql-instance-credentials
       mountPath: /secrets/cloudsql
